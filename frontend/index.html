@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Lyall Salkinder's Mukuru Test</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .mt-20 {margin-top:20px}
+    </style>
+</head>
+<body>
+<div class="container" id="currency-app">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active">
+                    <a target="_blank" href="http://github.com/lyallsv">View Source</a>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Lyall Salkinder's Mukuru Test</h3>
+    </div>
+    <div v-show="showSuccessMessage" class="alert alert-success">
+        <strong>Success!</strong> Currency purchased
+    </div>
+    <div class="panel panel-default" v-show="! showQuotation">
+        <div class="panel-heading">
+            <h3 class="panel-title">Purchase foreign currencies.</h3>
+        </div>
+        <div class="panel-body">
+            <form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="currency">Please select a currency you would like to purchase:</label>
+                            <select id="currency"
+                                    v-model="selectedCurrency"
+                                    v-on:change="updateDollarAmount"
+                                    class="form-control">
+                                <option v-for="(currency, index) in currencies" :value="index">
+                                    {{ currency.currency }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">{{ currencies[selectedCurrency].code }}</span>
+                            <input type="number"
+                                   v-model="foreignCurrencyAmount"
+                                   v-on:keyup="updateDollarAmount"
+                                   class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="number"
+                                   v-model="dollarAmount"
+                                   v-on:keyup="updateForeignCurrencyAmount"
+                                   class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right mt-20">
+                            <a v-on:click="showQuotationPage" class="btn btn-success">Get Qoute</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div v-show="showQuotation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Quotation for purchase of
+                    <strong>{{ foreignCurrencyAmount }} {{ currencies[selectedCurrency].code }}</strong>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Surcharge Percent</th>
+                            <th>Surcharge Amount</th>
+                            <th>Discount Amount</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <td>{{ currencies[selectedCurrency].surcharge_percent }} %</td>
+                        <td>$ {{ quotation.surcharge_amount }}</td>
+                        <td>$ {{ quotation.discount_amount }}</td>
+                        <td>$ {{ quotation.total }}</td>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button v-on:click="showPurchaseScreen" class="btn" >Back</button>
+                        <button v-on:click="purchase" class="btn  btn-primary pull-right">Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./vue-state-helper.js"></script>
+<script src="./currency-purchaser.js"></script>
+</body>
+</html>
