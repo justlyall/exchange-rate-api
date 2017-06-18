@@ -39,7 +39,7 @@ Moment of truth..
 
 Run curl/open your browser and navigate to http://localhost/server/public/api/v1/currencies , If everything is perfect you will the some JSON, 
 
-Finally you can then test the app that i have create for you: http://localhost/frontend
+Finally you can then test the app that I have created for you: http://localhost/frontend
 
 # API Url endpoints
 
