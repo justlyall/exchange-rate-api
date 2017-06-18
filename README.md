@@ -35,15 +35,11 @@ These installion instructions assume that your developement enviroment is up and
 $ php artisan migrate --seed
 ```
 
-If you have gotten this far then hopefully everything should be working.
+Moment of truth..
 
-maybe do a quick check to see if the server is running smoothly
+Run curl/open your browser and navigate to http://localhost/server/public/api/v1/currencies , If everything is perfect you will the some JSON, 
 
-Run curl/open your browser and navigate to http://localhost/server/public/api/v1/currencies this should output a list of currencies 
-
-If that is working then you are ready to experiance this awesome.
-
-Open your browser and navigate to http://localhost/frontend
+Finally you can then test the app that i have create for you: http://localhost/frontend
 
 # API Url endpoints
 
