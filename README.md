@@ -13,7 +13,6 @@ $ php artisan migrate --seed
 ```
 
 # Installation Instructions
--------------------------
 
 These installion instructions assume that your developement enviroment is up and running. 
 
@@ -47,7 +46,6 @@ If that is working then you are ready to experiance this awesome.
 Open your browser and navigate to http://localhost/frontend
 
 # API Url endpoints
--------------------------
 
 Example of the api endpoint
 
