@@ -2,7 +2,7 @@
 
 Hi Mukuru team :) So i decided to use laravel for this test.
 
-You can find all of the Test's business logic in **server/app/Mukuru**
+You can find all of this Test's business logic in **server/app/Mukuru**
 
 All specific configurations for this test can be found in **server/config/mukuru.php**
 
